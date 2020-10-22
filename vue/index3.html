@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子传父组件</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <hello-world @add="add1($event)"></hello-world>
+    </div>
+    <script>
+        //  自定义hello world组件 
+        Vue.component('hello-world', {
+            template: `<button @click="$emit('add',5)">按钮</button> `
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                add1: function (val) {
+                    alert(val)
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>

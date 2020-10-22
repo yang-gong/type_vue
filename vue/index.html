@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <h1 v-text="msg"></h1> -->
+        <!-- 自定义hello world组件 -->
+        <hello-world></hello-world>
+        <!-- 自定义计数组件 -->
+        <button-click></button-click>
+    </div>
+    <script>
+        //  自定义hello world组件 
+        Vue.component('hello-world', {
+            data: function () {
+                return {
+                    msg: 'hello world'
+                }
+            },
+            template: ' <h1 v-text="msg"></h1>'
+        })
+
+        //  自定义计数组件
+        Vue.component('button-click', {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: ` <div>
+                <button @click="count++" > 按钮</button>
+                <span>点击了{{count}}次</span>
+                </div>`
+        })
+        //闭包
+        function fu1() {
+            var a = 0;
+            return function () {
+                a++;
+                return a;
+
+            }
+        }
+        console.log((fu1())());
+
+        var b = fu1();
+        console.log(b());
+        console.log(b());
+        console.log(b());
+
+
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+
+</body>
+
+</html>

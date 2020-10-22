@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 间接的使用了父传子的方法 -->
+        <!-- 自定义hello world组件 -->
+        <input type="text" v-model="a">
+        <hello-world :text="a"></hello-world>
+        <hello-world text="hello wprld"></hello-world>
+        <hello-world :text="b"></hello-world>
+    </div>
+    <script>
+        //  自定义hello world组件 
+        Vue.component('hello-world', {
+            props: ['text'],      //父传子的时候使用props组件
+            template: ' <h1 v-text="text"></h1>'
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                a: '123',
+                b: '456',
+            }
+        })
+    </script>
+
+</body>
+
+</html>
